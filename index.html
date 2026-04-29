@@ -1,459 +1,132 @@
 <!DOCTYPE html>
 <html lang="zh-CN" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>桑康杰 (Lance) 的个人主页</title>
-    <!-- 引入 Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 引入 FontAwesome 图标库 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 配置 Tailwind 主题颜色 -->
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#4f46e5', // Indigo 600
-                        darkBg: '#0f172a',  // Slate 900
-                        darkCard: '#1e293b' // Slate 800
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* 自定义一些动画和滚动条样式 */
-        .fade-in { animation: fadeIn 1s ease-in-out; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* 隐藏滚动条但保留滚动功能 (适用于某些设计需求) */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1; 
-        }
-        .dark ::-webkit-scrollbar-track {
-            background: #1e293b; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #c7c7cc; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #4f46e5; 
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kangjie Sang 的个人主页：客户成功与用户运营专家，极客与生活家。" />
+  <title>Kangjie Sang | 个人主页</title>
+  <script>
+    tailwind = { config: { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'] }, colors: { ink: '#17202a', mist: '#f6f8fb', aurora: '#17c3b2', ember: '#ff8a5b' }, boxShadow: { soft: '0 18px 60px rgba(23, 32, 42, 0.10)', glow: '0 0 40px rgba(23, 195, 178, 0.24)' } } } } };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+  <style>
+    :root { color-scheme: light; }
+    html.dark { color-scheme: dark; }
+    body { min-height: 100vh; overflow-x: hidden; background: radial-gradient(circle at 12% 10%, rgba(23, 195, 178, 0.15), transparent 30rem), radial-gradient(circle at 88% 20%, rgba(255, 138, 91, 0.14), transparent 28rem), linear-gradient(135deg, #f8fafc 0%, #eef4f8 48%, #fdf8f3 100%); }
+    html.dark body { background: radial-gradient(circle at 12% 10%, rgba(23, 195, 178, 0.18), transparent 30rem), radial-gradient(circle at 88% 20%, rgba(255, 138, 91, 0.13), transparent 28rem), linear-gradient(135deg, #0d1117 0%, #131b22 50%, #17130f 100%); }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(23, 195, 178, 0.42); border: 3px solid transparent; border-radius: 999px; background-clip: content-box; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(23, 195, 178, 0.68); border: 3px solid transparent; background-clip: content-box; }
+    .glass-nav { background: rgba(255, 255, 255, 0.72); border-bottom: 1px solid rgba(255, 255, 255, 0.55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+    html.dark .glass-nav { background: rgba(13, 17, 23, 0.72); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    .surface-card { background: rgba(255, 255, 255, 0.74); border: 1px solid rgba(255, 255, 255, 0.72); box-shadow: 0 18px 60px rgba(23, 32, 42, 0.10); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    html.dark .surface-card { background: rgba(20, 27, 34, 0.72); border-color: rgba(255, 255, 255, 0.08); box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28); }
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 720ms ease, transform 720ms ease; }
+    .fade-in.is-visible { opacity: 1; transform: translateY(0); }
+    .nav-link { position: relative; border-radius: 999px; transition: color 200ms ease, background-color 200ms ease; }
+    .nav-link.active { color: #0f766e; background: rgba(23, 195, 178, 0.13); }
+    html.dark .nav-link.active { color: #5eead4; background: rgba(45, 212, 191, 0.12); }
+    .wechat-tooltip::after { content: "微信号: LanceSKJ"; position: absolute; left: 50%; bottom: calc(100% + 12px); transform: translateX(-50%) translateY(6px); width: max-content; max-width: 13rem; padding: 0.5rem 0.75rem; border-radius: 0.75rem; background: rgba(23, 32, 42, 0.92); color: white; font-size: 0.8rem; line-height: 1; opacity: 0; pointer-events: none; transition: opacity 180ms ease, transform 180ms ease; white-space: nowrap; }
+    .wechat-tooltip:hover::after, .wechat-tooltip:focus-visible::after { opacity: 1; transform: translateX(-50%) translateY(0); }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 1ms !important; animation-duration: 1ms !important; } .fade-in { opacity: 1; transform: none; } }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-darkBg dark:text-slate-200 transition-colors duration-300 antialiased font-sans">
-
-    <!-- 导航栏 -->
-    <nav class="fixed w-full z-50 bg-white/80 dark:bg-darkBg/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo/姓名 -->
-                <div class="flex-shrink-0">
-                    <a href="#home" class="text-2xl font-bold text-primary tracking-tighter">Kangjie<span class="text-slate-800 dark:text-white">.</span></a>
-                </div>
-                
-                <!-- 桌面端菜单 -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="nav-link hover:text-primary dark:hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">首页</a>
-                        <a href="#journey" class="nav-link hover:text-primary dark:hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">职业轨迹</a>
-                        <a href="#sandbox" class="nav-link hover:text-primary dark:hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">极客沙盒</a>
-                        <a href="#life" class="nav-link hover:text-primary dark:hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">生活与热爱</a>
-                        <a href="#contact" class="nav-link hover:text-primary dark:hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">联系方式</a>
-                        <!-- 深色模式切换按钮 -->
-                        <button id="theme-toggle" class="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors focus:outline-none">
-                            <i class="fas fa-moon text-lg dark:hidden"></i>
-                            <i class="fas fa-sun text-lg hidden dark:block"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 移动端菜单按钮 -->
-                <div class="md:hidden flex items-center space-x-4">
-                    <button id="theme-toggle-mobile" class="text-slate-500 dark:text-slate-400 focus:outline-none">
-                        <i class="fas fa-moon text-lg dark:hidden"></i>
-                        <i class="fas fa-sun text-lg hidden dark:block"></i>
-                    </button>
-                    <button id="mobile-menu-button" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 移动端下拉菜单 -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-darkBg border-b border-slate-200 dark:border-slate-800 absolute w-full">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-darkCard">首页</a>
-                <a href="#journey" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-darkCard">职业轨迹</a>
-                <a href="#sandbox" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-darkCard">极客沙盒</a>
-                <a href="#life" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-darkCard">生活与热爱</a>
-                <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-darkCard">联系方式</a>
-            </div>
-        </div>
+<body class="font-sans text-slate-800 antialiased dark:text-slate-100">
+  <!-- 顶部固定导航栏 -->
+  <header class="glass-nav fixed inset-x-0 top-0 z-50">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8" aria-label="主导航">
+      <a href="#hero" class="group flex items-center gap-3" aria-label="返回首页">
+        <span class="grid h-10 w-10 place-items-center rounded-2xl bg-ink text-sm font-bold text-white shadow-glow dark:bg-white dark:text-ink">KS</span>
+        <span class="hidden text-sm font-semibold tracking-wide text-slate-700 dark:text-slate-200 sm:block">Kangjie Sang</span>
+      </a>
+      <div class="hidden items-center gap-1 md:flex">
+        <a class="nav-link px-4 py-2 text-sm font-medium text-slate-600 hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-200" href="#journey">轨迹</a>
+        <a class="nav-link px-4 py-2 text-sm font-medium text-slate-600 hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-200" href="#sandbox">沙盒</a>
+        <a class="nav-link px-4 py-2 text-sm font-medium text-slate-600 hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-200" href="#life">生活</a>
+        <a class="nav-link px-4 py-2 text-sm font-medium text-slate-600 hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-200" href="#contact">连接</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="theme-toggle" type="button" class="grid h-10 w-10 place-items-center rounded-full border border-white/60 bg-white/70 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:text-teal-700 dark:border-white/10 dark:bg-white/10 dark:text-slate-200 dark:hover:text-teal-200" aria-label="切换深色或浅色模式"><i id="theme-icon" class="fa-solid fa-moon text-base"></i></button>
+        <button id="menu-toggle" type="button" class="grid h-10 w-10 place-items-center rounded-full border border-white/60 bg-white/70 text-slate-700 shadow-sm transition md:hidden dark:border-white/10 dark:bg-white/10 dark:text-slate-200" aria-label="打开或关闭移动端菜单" aria-expanded="false"><i id="menu-icon" class="fa-solid fa-bars"></i></button>
+      </div>
     </nav>
-
-    <!-- 首页 Hero 区域 -->
-    <section id="home" class="pt-32 pb-20 md:pt-48 md:pb-32 px-4 max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between fade-in min-h-screen">
-        <div class="w-full md:w-3/5 mt-10 md:mt-0 text-center md:text-left">
-            <p class="text-primary font-medium mb-2 tracking-wide">你好，我是</p>
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-slate-900 dark:text-white">Kangjie Sang</h1>
-            <h2 class="text-xl md:text-2xl font-semibold text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">客户成功与用户运营专家 | 坚定的“造钟人” | 极客与生活家</h2>
-            <p class="text-slate-500 dark:text-slate-400 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
-                坐标上海长宁。在 ToB SaaS 与大健康行业深耕，擅长用系统化思维解决问题。崇尚“造钟人模式”——致力于构建长期高效的自动化系统与SOP，坚信追求高价值的质量远胜于数量。
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#journey" class="bg-primary hover:bg-indigo-700 text-white px-8 py-3 rounded-full font-medium transition-colors shadow-lg shadow-indigo-500/30 text-center">
-                    查看我的轨迹
-                </a>
-                <a href="#contact" class="bg-white dark:bg-transparent border-2 border-slate-200 dark:border-slate-700 hover:border-primary dark:hover:border-primary text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary px-8 py-3 rounded-full font-medium transition-all text-center">
-                    取得联系
-                </a>
-            </div>
+    <div id="mobile-menu" class="hidden border-t border-white/40 px-5 pb-4 pt-2 dark:border-white/10 md:hidden">
+      <div class="mx-auto grid max-w-7xl gap-2">
+        <a class="mobile-link nav-link px-4 py-3 text-sm font-medium text-slate-700 dark:text-slate-200" href="#journey">职业轨迹</a>
+        <a class="mobile-link nav-link px-4 py-3 text-sm font-medium text-slate-700 dark:text-slate-200" href="#sandbox">极客沙盒</a>
+        <a class="mobile-link nav-link px-4 py-3 text-sm font-medium text-slate-700 dark:text-slate-200" href="#life">生活与热爱</a>
+        <a class="mobile-link nav-link px-4 py-3 text-sm font-medium text-slate-700 dark:text-slate-200" href="#contact">建立连接</a>
+      </div>
+    </div>
+  </header>
+  <main>
+    <!-- 模块一：首屏 Hero Section -->
+    <section id="hero" class="relative flex min-h-screen items-center px-5 pb-20 pt-28 lg:px-8">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+        <div class="fade-in">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/65 px-4 py-2 text-sm font-medium text-teal-800 shadow-sm dark:border-white/10 dark:bg-white/10 dark:text-teal-200"><span class="h-2 w-2 rounded-full bg-aurora"></span>Shanghai Changning · ToB SaaS · Customer Success</div>
+          <h1 class="text-5xl font-black tracking-normal text-ink dark:text-white sm:text-6xl lg:text-7xl">Kangjie Sang</h1>
+          <p class="mt-5 text-xl font-semibold text-slate-700 dark:text-slate-200 sm:text-2xl">客户成功与用户运营专家 | 极客与生活家</p>
+          <p class="mt-6 max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">坐标上海长宁。在 ToB SaaS 与大健康行业深耕，擅长用系统化思维解决问题，致力于为客户构建长期高效的自动化业务流程与 SOP。我坚信在 ToB 领域，追求高价值的服务质量远胜于单纯的数量叠加。</p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="#journey" class="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-1 hover:bg-slate-900 dark:bg-white dark:text-ink dark:hover:bg-teal-50">查看我的轨迹 <i class="fa-solid fa-arrow-down-long"></i></a>
+            <a href="#contact" class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300/80 bg-white/70 px-6 py-3 text-sm font-semibold text-slate-800 shadow-sm transition hover:-translate-y-1 hover:border-teal-300 hover:text-teal-700 dark:border-white/10 dark:bg-white/10 dark:text-slate-100 dark:hover:text-teal-200">取得联系 <i class="fa-regular fa-paper-plane"></i></a>
+          </div>
         </div>
-        <div class="w-full md:w-2/5 flex justify-center">
-            <!-- 个人头像，请替换为你的真实照片 URL -->
-            <div class="relative w-64 h-64 md:w-80 md:h-80">
-                <div class="absolute inset-0 bg-primary rounded-full blur-2xl opacity-20 dark:opacity-40 animate-pulse"></div>
-                <img src="1462.jpg" alt="Kangjie Sang" class="relative z-10 w-full h-full object-cover rounded-full border-4 border-white dark:border-slate-800 shadow-2xl">
-            </div>
+        <div class="fade-in relative">
+          <div class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-aurora/30 via-white/10 to-ember/30 blur-2xl"></div>
+          <figure class="surface-card relative overflow-hidden rounded-[2rem] p-3">
+            <img src="1462.jpg" alt="Kangjie Sang 的个人形象照片" class="aspect-[4/5] w-full rounded-[1.55rem] object-cover" />
+            <figcaption class="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/50 bg-white/70 p-4 text-sm text-slate-700 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/55 dark:text-slate-200"><div class="flex items-center justify-between gap-3"><span class="font-semibold">Systematic thinker</span><span class="rounded-full bg-teal-500/15 px-3 py-1 text-xs font-semibold text-teal-700 dark:text-teal-200">AI-enabled CS</span></div></figcaption>
+          </figure>
         </div>
+      </div>
     </section>
-
-    <!-- 职业轨迹与教育 区域 -->
-    <section id="journey" class="py-20 bg-white dark:bg-darkCard transition-colors duration-300">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-16 text-slate-900 dark:text-white">
-                <span class="text-primary">01.</span> 职业轨迹 & 教育背景
-            </h2>
-            
-            <div class="flex flex-col lg:flex-row gap-12">
-                <!-- 左侧：职业轨迹 (时间轴) -->
-                <div class="w-full lg:w-2/3">
-                    <h3 class="text-2xl font-semibold mb-8 text-slate-800 dark:text-slate-200 flex items-center">
-                        <i class="fas fa-briefcase text-primary mr-3"></i>职业经历
-                    </h3>
-                    <div class="relative border-l-2 border-slate-200 dark:border-slate-700 ml-4 md:ml-6">
-                        
-                        <!-- 钉钉 -->
-                        <div class="mb-10 ml-8 relative group">
-                            <span class="absolute -left-10 flex items-center justify-center w-5 h-5 bg-white dark:bg-darkCard rounded-full border-2 border-primary ring-4 ring-white dark:ring-darkCard group-hover:scale-125 transition-transform duration-300"></span>
-                            <h4 class="text-xl font-bold text-slate-900 dark:text-white">钉钉 (DingTalk)</h4>
-                            <p class="text-primary font-medium mb-2">客户成功/用户运营 (CSM) · 大健康行业</p>
-                            <p class="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">
-                                <strong>核心理念:</strong> 推动大健康行业客户的数字化转型与AI赋能。
-                            </p>
-                            <div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-5 border border-slate-100 dark:border-slate-700">
-                                <h5 class="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3">代表项目：</h5>
-                                <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-primary mt-1 mr-2 flex-shrink-0"></i>
-                                        <span><strong>信达生物 (Innovent Bio):</strong> 主导“信达钉”大版本升级与跨平台兼容性攻坚，推动 AI Table 深度整合。</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-primary mt-1 mr-2 flex-shrink-0"></i>
-                                        <span><strong>美年大健康:</strong> 牵头“美小年” AI 助手 2.0 升级，构建面向业务负责人的高效知识管理体系。</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-primary mt-1 mr-2 flex-shrink-0"></i>
-                                        <span><strong>药明生物 (WuXi Biologics):</strong> 协调核心技术支持，落地 AI 工具培训与安全合规测试。</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- 北森 -->
-                        <div class="ml-8 relative group">
-                            <span class="absolute -left-10 flex items-center justify-center w-5 h-5 bg-slate-200 dark:bg-slate-700 rounded-full border-2 border-slate-300 dark:border-slate-600 ring-4 ring-white dark:ring-darkCard group-hover:border-primary transition-colors duration-300"></span>
-                            <h4 class="text-xl font-bold text-slate-900 dark:text-white">北森 (Beisen)</h4>
-                            <p class="text-slate-500 dark:text-slate-400 font-medium mb-2">HR SaaS (2021 - 2024)</p>
-                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                                在三年半的时间里，积累了扎实的 ToB 客户服务与 SaaS 产品运营经验，深入理解了企业级软件的交付生命周期与客户价值实现。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 右侧：教育背景 -->
-                <div class="w-full lg:w-1/3">
-                    <h3 class="text-2xl font-semibold mb-8 text-slate-800 dark:text-slate-200 flex items-center">
-                        <i class="fas fa-graduation-cap text-primary mr-3"></i>教育背景
-                    </h3>
-                    <div class="space-y-6">
-                        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-6 border border-slate-100 dark:border-slate-700 hover:border-primary/50 transition-colors duration-300">
-                            <div class="flex items-center mb-2">
-                                <i class="fas fa-university text-slate-400 mr-2 text-xl"></i>
-                                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Monash University</h4>
-                            </div>
-                            <p class="text-primary font-medium text-sm mb-1">商业信息系统硕士</p>
-                            <p class="text-slate-500 dark:text-slate-400 text-xs">Master of Business Information Systems</p>
-                        </div>
-
-                        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-6 border border-slate-100 dark:border-slate-700 hover:border-primary/50 transition-colors duration-300">
-                            <div class="flex items-center mb-2">
-                                <i class="fas fa-school text-slate-400 mr-2 text-xl"></i>
-                                <h4 class="text-lg font-bold text-slate-900 dark:text-white">安徽中医药大学</h4>
-                            </div>
-                            <p class="text-primary font-medium text-sm mb-1">国际经济与贸易学士</p>
-                            <p class="text-slate-500 dark:text-slate-400 text-xs">Bachelor of International Economics and Trade</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- 模块二：职业轨迹 & 教育背景 -->
+    <section id="journey" class="px-5 py-24 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="fade-in mb-12 max-w-3xl"><p class="text-sm font-bold uppercase tracking-[0.24em] text-teal-700 dark:text-teal-300">Journey</p><h2 class="mt-3 text-3xl font-black text-ink dark:text-white sm:text-4xl">职业轨迹 & 教育背景</h2><p class="mt-4 leading-7 text-slate-600 dark:text-slate-300">从商业信息系统到 HR SaaS，再到大健康行业客户成功，用产品理解、业务耐心和 AI 工具连接真实场景。</p></div>
+        <div class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+          <div class="surface-card fade-in rounded-3xl p-6 sm:p-8">
+            <div class="relative space-y-8 before:absolute before:left-4 before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-slate-200 dark:before:bg-white/10">
+              <article class="relative pl-12"><span class="absolute left-0 top-1 grid h-8 w-8 place-items-center rounded-full bg-teal-500 text-white shadow-glow"><i class="fa-solid fa-briefcase text-xs"></i></span><div class="flex flex-wrap items-center gap-3"><h3 class="text-xl font-bold text-ink dark:text-white">钉钉 DingTalk</h3><span class="rounded-full bg-teal-500/12 px-3 py-1 text-xs font-semibold text-teal-700 dark:text-teal-200">客户成功/用户运营 · 大健康行业</span></div><p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">推动大健康行业客户的数字化转型与 AI 赋能，围绕组织协同、流程提效和工具落地构建可持续的客户成功路径。</p><div class="mt-5 grid gap-3 sm:grid-cols-3"><div class="rounded-2xl bg-slate-50 p-4 dark:bg-white/5"><p class="font-semibold text-slate-900 dark:text-white">信达生物</p><p class="mt-1 text-sm text-slate-500 dark:text-slate-400">AI Table 整合</p></div><div class="rounded-2xl bg-slate-50 p-4 dark:bg-white/5"><p class="font-semibold text-slate-900 dark:text-white">美年大健康</p><p class="mt-1 text-sm text-slate-500 dark:text-slate-400">AI 助手 2.0</p></div><div class="rounded-2xl bg-slate-50 p-4 dark:bg-white/5"><p class="font-semibold text-slate-900 dark:text-white">药明生物</p><p class="mt-1 text-sm text-slate-500 dark:text-slate-400">AI 工具培训落地</p></div></div></article>
+              <article class="relative pl-12"><span class="absolute left-0 top-1 grid h-8 w-8 place-items-center rounded-full bg-ember text-white"><i class="fa-solid fa-layer-group text-xs"></i></span><div class="flex flex-wrap items-center gap-3"><h3 class="text-xl font-bold text-ink dark:text-white">北森 Beisen</h3><span class="rounded-full bg-orange-500/12 px-3 py-1 text-xs font-semibold text-orange-700 dark:text-orange-200">HR SaaS · 2021-2024</span></div><p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">积累了扎实的 ToB 客户服务与 SaaS 产品运营经验，理解企业客户从上线、使用到持续增值的完整生命周期。</p></article>
             </div>
+          </div>
+          <aside class="surface-card fade-in rounded-3xl p-6 sm:p-8"><div class="mb-6 flex items-center gap-3"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-ink text-white dark:bg-white dark:text-ink"><i class="fa-solid fa-graduation-cap"></i></span><div><h3 class="text-xl font-bold text-ink dark:text-white">教育背景</h3><p class="text-sm text-slate-500 dark:text-slate-400">Business · Information Systems</p></div></div><div class="space-y-4"><div class="rounded-2xl bg-slate-50 p-5 dark:bg-white/5"><p class="text-sm font-semibold text-teal-700 dark:text-teal-200">Monash University</p><p class="mt-1 text-lg font-bold text-slate-900 dark:text-white">商业信息系统硕士</p></div><div class="rounded-2xl bg-slate-50 p-5 dark:bg-white/5"><p class="text-sm font-semibold text-teal-700 dark:text-teal-200">安徽中医药大学</p><p class="mt-1 text-lg font-bold text-slate-900 dark:text-white">国际经济与贸易学士</p></div></div></aside>
         </div>
+      </div>
     </section>
-
-    <!-- 极客沙盒 区域 -->
-    <section id="sandbox" class="py-20 max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-16 text-slate-900 dark:text-white">
-            <span class="text-primary">02.</span> 极客沙盒
-        </h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- LLM Card -->
-            <div class="bg-white dark:bg-darkCard rounded-2xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800 hover:-translate-y-2 transition-transform duration-300 group p-8">
-                <div class="w-14 h-14 bg-indigo-100 dark:bg-indigo-900/50 rounded-xl flex items-center justify-center mb-6">
-                    <i class="fas fa-microchip text-2xl text-primary"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">LLM 测评与探索</h3>
-                <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-                    持续跟踪大语言模型发展，在 <span class="font-medium text-slate-800 dark:text-slate-200">OpenClaw</span> 框架下对 Gemini、GPT、Claude 等主流模型进行 API 级深度基准测试与对比分析，探索 AI 在业务场景的最佳实践。
-                </p>
-                <div class="flex flex-wrap gap-2 text-xs font-mono">
-                    <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-md">Gemini API</span>
-                    <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-md">ChatGPT</span>
-                    <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-md">Claude</span>
-                    <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-md">OpenClaw</span>
-                </div>
-            </div>
-
-            <!-- Homelab Card -->
-            <div class="bg-white dark:bg-darkCard rounded-2xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800 hover:-translate-y-2 transition-transform duration-300 group p-8">
-                <div class="w-14 h-14 bg-indigo-100 dark:bg-indigo-900/50 rounded-xl flex items-center justify-center mb-6">
-                    <i class="fas fa-server text-2xl text-primary"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Homelab & 网络折腾</h3>
-                <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-                    熟练配置 R5S 软路由与网络端口转发，日常在 Windows WSL 环境下管理 Ubuntu 服务器。享受从零搭建系统、掌控底层逻辑与自动化部署的极客乐趣。
-                </p>
-                <div class="flex flex-wrap gap-2 text-xs font-mono">
-                    <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-md">R5S 软路由</span>
-                    <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-md">WSL</span>
-                    <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-md">Ubuntu</span>
-                    <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-md">Networking</span>
-                </div>
-            </div>
+    <!-- 模块三：极客沙盒 -->
+    <section id="sandbox" class="px-5 py-24 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="fade-in mb-12 max-w-3xl"><p class="text-sm font-bold uppercase tracking-[0.24em] text-teal-700 dark:text-teal-300">Geek Sandbox</p><h2 class="mt-3 text-3xl font-black text-ink dark:text-white sm:text-4xl">极客沙盒</h2><p class="mt-4 leading-7 text-slate-600 dark:text-slate-300">工作之外，继续把好奇心投入模型、网络与系统环境，用实验保持对技术边界的体感。</p></div>
+        <div class="grid gap-6 lg:grid-cols-2">
+          <article class="surface-card fade-in rounded-3xl p-7 transition hover:-translate-y-1 hover:shadow-glow"><div class="mb-6 flex items-center justify-between gap-4"><span class="grid h-14 w-14 place-items-center rounded-2xl bg-teal-500/15 text-teal-700 dark:text-teal-200"><i class="fa-solid fa-brain text-xl"></i></span><i class="fa-solid fa-terminal text-2xl text-slate-300 dark:text-slate-600"></i></div><h3 class="text-2xl font-bold text-ink dark:text-white">LLM 测评与探索</h3><p class="mt-4 leading-7 text-slate-600 dark:text-slate-300">在 OpenClaw 框架下对 Gemini、GPT、Claude 等主流模型进行 API 级深度基准测试，关注模型能力、成本与实际任务适配。</p><div class="mt-6 flex flex-wrap gap-2"><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600 dark:bg-white/8 dark:text-slate-300">Gemini API</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600 dark:bg-white/8 dark:text-slate-300">ChatGPT</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600 dark:bg-white/8 dark:text-slate-300">Claude</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600 dark:bg-white/8 dark:text-slate-300">OpenClaw</span></div></article>
+          <article class="surface-card fade-in rounded-3xl p-7 transition hover:-translate-y-1 hover:shadow-glow"><div class="mb-6 flex items-center justify-between gap-4"><span class="grid h-14 w-14 place-items-center rounded-2xl bg-orange-500/15 text-orange-700 dark:text-orange-200"><i class="fa-solid fa-network-wired text-xl"></i></span><i class="fa-solid fa-server text-2xl text-slate-300 dark:text-slate-600"></i></div><h3 class="text-2xl font-bold text-ink dark:text-white">Homelab & 网络折腾</h3><p class="mt-4 leading-7 text-slate-600 dark:text-slate-300">配置 R5S 软路由与网络端口转发，在 WSL 环境下管理 Ubuntu 服务器，把家用网络当成稳定、可控的小型实验场。</p><div class="mt-6 flex flex-wrap gap-2"><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600 dark:bg-white/8 dark:text-slate-300">R5S 软路由</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600 dark:bg-white/8 dark:text-slate-300">WSL</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600 dark:bg-white/8 dark:text-slate-300">Ubuntu</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600 dark:bg-white/8 dark:text-slate-300">Networking</span></div></article>
         </div>
+      </div>
     </section>
-
-    <!-- 生活与热爱 (Bento Box) 区域 -->
-    <section id="life" class="py-20 bg-slate-100 dark:bg-slate-800/30 transition-colors duration-300">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-16 text-slate-900 dark:text-white">
-                <span class="text-primary">03.</span> 生活与热爱
-            </h2>
-            
-            <!-- Bento Box Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
-                
-                <!-- 游戏 (跨两列) -->
-                <div class="md:col-span-2 rounded-3xl overflow-hidden relative group shadow-sm">
-                    <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/30 transition-colors duration-300"></div>
-                    <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Console Gaming" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="relative z-20 h-full p-8 flex flex-col justify-end">
-                        <div class="flex items-center space-x-3 mb-2">
-                            <i class="fas fa-gamepad text-white text-2xl"></i>
-                            <h3 class="text-2xl font-bold text-white">主机游戏</h3>
-                        </div>
-                        <p class="text-slate-200 text-sm md:text-base leading-relaxed">
-                            资深 PS5 与 Switch 玩家。从《异度神剑3》的宏大叙事到《博德之门3》的硬核策略，再到《黑神话：悟空》的动作体验，热衷于沉浸式的游戏世界。
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 咖啡 (单列) -->
-                <div class="rounded-3xl overflow-hidden relative group shadow-sm bg-white dark:bg-darkCard p-8 flex flex-col justify-center border border-slate-200 dark:border-slate-700">
-                    <div class="text-primary mb-4 text-4xl"><i class="fas fa-mug-hot"></i></div>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">特手冲咖啡</h3>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                        以理科生的严谨对待每一杯手冲，精准把控水粉比与温度，偏爱中度烘焙日晒豆的风味，在香气中寻找平静。
-                    </p>
-                </div>
-
-                <!-- 摄影 (单列) -->
-                <div class="rounded-3xl overflow-hidden relative group shadow-sm">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1516961642265-531546e84af2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Film Photography" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="relative z-20 h-full p-6 flex flex-col justify-end">
-                        <h3 class="text-xl font-bold text-white mb-2"><i class="fas fa-camera mr-2"></i>胶片摄影</h3>
-                        <p class="text-slate-300 text-sm mb-3">
-                            偏爱 Pentax ME 搭配 Kodak Gold 200 胶卷，研究曝光补偿与色彩还原，用物理感光记录日常光影。
-                        </p>
-                        <a href="https://xhslink.com/m/3u2fMFQ8rfI" target="_blank" class="inline-flex items-center text-xs text-white/80 hover:text-white transition-colors w-max group/link">
-                            <span class="border-b border-white/30 group-hover/link:border-white pb-0.5 transition-colors">在小红书查看作品</span>
-                            <i class="fas fa-arrow-right ml-1.5 text-[10px] transform group-hover/link:translate-x-1 transition-transform"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 家与陪伴 (跨两列) -->
-                <div class="md:col-span-2 rounded-3xl overflow-hidden relative shadow-sm bg-gradient-to-br from-indigo-50 to-orange-50 dark:from-slate-800 dark:to-slate-800 border border-slate-200 dark:border-slate-700 p-8 flex items-center">
-                    <div class="w-24 h-24 flex-shrink-0 bg-white dark:bg-slate-700 rounded-full shadow-md flex items-center justify-center mr-6 overflow-hidden border-4 border-white dark:border-slate-600">
-                        <img src="IMG_20240726_235349.jpg" alt="Cat Fufu" class="w-full h-full object-cover">
-                    </div>
-                    <div>
-                        <div class="flex items-center space-x-3 mb-2">
-                            <i class="fas fa-home text-orange-400 text-2xl"></i>
-                            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">家与陪伴</h3>
-                        </div>
-                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm md:text-base">
-                            拥有一位同在 ToB 领域做产品经理的妻子，以及一只出生于2023年秋天的英短金渐层小猫 <span class="font-bold text-slate-800 dark:text-slate-200">Fufu</span>。不论在数字世界如何折腾，家始终是锚点。
-                        </p>
-                    </div>
-                </div>
-
-            </div>
+    <!-- 模块四：生活与热爱 Bento Box -->
+    <section id="life" class="px-5 py-24 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="fade-in mb-12 max-w-3xl"><p class="text-sm font-bold uppercase tracking-[0.24em] text-teal-700 dark:text-teal-300">Life</p><h2 class="mt-3 text-3xl font-black text-ink dark:text-white sm:text-4xl">生活与热爱</h2><p class="mt-4 leading-7 text-slate-600 dark:text-slate-300">效率之外，也认真保存游戏、咖啡、胶片与陪伴带来的柔软时刻。</p></div>
+        <div class="grid auto-rows-[minmax(210px,auto)] gap-6 lg:grid-cols-4">
+          <article class="surface-card fade-in rounded-3xl p-7 lg:col-span-2"><div class="flex h-full flex-col justify-between"><div><span class="grid h-12 w-12 place-items-center rounded-2xl bg-indigo-500/15 text-indigo-700 dark:text-indigo-200"><i class="fa-solid fa-gamepad"></i></span><h3 class="mt-5 text-2xl font-bold text-ink dark:text-white">主机游戏</h3><p class="mt-4 leading-7 text-slate-600 dark:text-slate-300">资深 PS5 与 Switch 玩家。代表作《异度神剑3》、《博德之门3》、《黑神话：悟空》。</p></div><div class="mt-8 flex flex-wrap gap-2"><span class="rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-700 dark:text-indigo-200">PS5</span><span class="rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-700 dark:text-indigo-200">Switch</span><span class="rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-700 dark:text-indigo-200">RPG</span></div></div></article>
+          <article class="surface-card fade-in rounded-3xl p-7"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-amber-500/15 text-amber-700 dark:text-amber-200"><i class="fa-solid fa-mug-hot"></i></span><h3 class="mt-5 text-2xl font-bold text-ink dark:text-white">手冲咖啡</h3><p class="mt-4 leading-7 text-slate-600 dark:text-slate-300">精准把控水粉比与温度，偏爱中度烘焙日晒豆。</p></article>
+          <article class="surface-card fade-in rounded-3xl p-7"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-rose-500/15 text-rose-700 dark:text-rose-200"><i class="fa-solid fa-camera-retro"></i></span><h3 class="mt-5 text-2xl font-bold text-ink dark:text-white">胶片摄影</h3><p class="mt-4 leading-7 text-slate-600 dark:text-slate-300">偏爱 Pentax ME 搭配 Kodak Gold 200 胶卷。</p><a href="https://xhslink.com/m/3u2fMFQ8rfI" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-teal-900 dark:text-teal-200 dark:hover:text-teal-100">在小红书查看作品 <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a></article>
+          <article class="surface-card fade-in overflow-hidden rounded-3xl lg:col-span-4"><div class="grid h-full lg:grid-cols-[0.92fr_1.08fr]"><img src="IMG_20240726_235349.jpg" alt="英短金渐层小猫 Fufu" class="h-72 w-full object-cover lg:h-full" /><div class="flex flex-col justify-center p-7 sm:p-9"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-teal-500/15 text-teal-700 dark:text-teal-200"><i class="fa-solid fa-heart"></i></span><h3 class="mt-5 text-3xl font-black text-ink dark:text-white">家与陪伴</h3><p class="mt-4 max-w-2xl leading-8 text-slate-600 dark:text-slate-300">同在 ToB 领域的妻子，和一只 2023 年秋天出生的英短金渐层小猫 Fufu。忙碌工作之外，家是最稳定也最珍贵的长期项目。</p></div></div></article>
         </div>
+      </div>
     </section>
-
-    <!-- 联系我 区域 -->
-    <section id="contact" class="py-20 bg-white dark:bg-darkCard transition-colors duration-300">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-4 text-slate-900 dark:text-white">
-                <span class="text-primary">04.</span> 建立连接
-            </h2>
-            <p class="text-slate-600 dark:text-slate-400 mb-10 max-w-xl mx-auto">
-                无论你是想交流 ToB 行业的见解、探讨 Homelab 的折腾心得，还是单纯想分享最近通关的好游戏，我的收件箱始终敞开。
-            </p>
-            
-            <a href="mailto:sangkangjie@gmail.com" class="inline-block bg-primary hover:bg-indigo-700 text-white px-10 py-4 rounded-full font-bold text-lg transition-all shadow-lg shadow-indigo-500/30 mb-16 transform hover:-translate-y-1">
-                <i class="fas fa-envelope mr-2"></i> 给我发邮件
-            </a>
-
-            <!-- 社交媒体链接 -->
-            <div class="flex justify-center space-x-8 text-3xl">
-                <!-- 微信图标及悬浮提示 -->
-                <div class="relative group inline-block text-slate-400 hover:text-[#07C160] dark:hover:text-[#07C160] transition-colors cursor-pointer transform hover:scale-110">
-                    <i class="fab fa-weixin"></i>
-                    <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-4 hidden group-hover:block bg-slate-800 dark:bg-slate-100 text-white dark:text-slate-900 text-sm font-medium px-4 py-2 rounded-xl shadow-xl whitespace-nowrap">
-                        微信号: LanceSKJ
-                        <!-- 底部小三角 -->
-                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-slate-800 dark:border-t-slate-100"></div>
-                    </div>
-                </div>
-                
-                <!-- 可以链接到你的测评脚本库或博客 -->
-                <a href="#" target="_blank" class="text-slate-400 hover:text-primary dark:hover:text-primary transition-colors transform hover:scale-110" title="Personal Blog/Link">
-                    <i class="fas fa-link"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 页脚 -->
-    <footer class="py-8 text-center text-slate-500 dark:text-slate-500 text-sm border-t border-slate-200 dark:border-slate-800">
-        <p>
-            Designed & Built by <span class="text-primary font-medium">Kangjie Sang</span>
-        </p>
-        <p class="mt-2">
-            &copy; <span id="year"></span> All Rights Reserved.
-        </p>
-    </footer>
-
-    <!-- JavaScript 交互逻辑 -->
-    <script>
-        // 自动更新年份
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // -----------------------------
-        // 暗色模式切换逻辑
-        // -----------------------------
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
-        const html = document.documentElement;
-
-        // 检查本地存储的主题偏好或系统偏好
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            html.classList.add('dark');
-        } else {
-            html.classList.remove('dark');
-        }
-
-        // 切换主题函数
-        const toggleTheme = () => {
-            html.classList.toggle('dark');
-            if (html.classList.contains('dark')) {
-                localStorage.theme = 'dark';
-            } else {
-                localStorage.theme = 'light';
-            }
-        };
-
-        // 绑定点击事件
-        themeToggleBtn.addEventListener('click', toggleTheme);
-        themeToggleMobileBtn.addEventListener('click', toggleTheme);
-
-
-        // -----------------------------
-        // 移动端菜单切换逻辑
-        // -----------------------------
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-        const menuIcon = mobileMenuButton.querySelector('i');
-
-        const toggleMobileMenu = () => {
-            mobileMenu.classList.toggle('hidden');
-            if (mobileMenu.classList.contains('hidden')) {
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
-            } else {
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-times');
-            }
-        };
-
-        mobileMenuButton.addEventListener('click', toggleMobileMenu);
-
-        // 点击移动端菜单链接后自动关闭菜单
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', toggleMobileMenu);
-        });
-
-        // -----------------------------
-        // 滚动时导航栏高亮 (Scroll Spy)
-        // -----------------------------
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                // 稍微向下偏移一点触发更自然
-                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('text-primary');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('text-primary');
-                }
-            });
-        });
-    </script>
+    <!-- 模块五：建立连接 -->
+    <section id="contact" class="px-5 py-24 lg:px-8"><div class="mx-auto max-w-4xl"><div class="surface-card fade-in rounded-[2rem] p-8 text-center sm:p-12"><p class="text-sm font-bold uppercase tracking-[0.24em] text-teal-700 dark:text-teal-300">Contact</p><h2 class="mt-3 text-3xl font-black text-ink dark:text-white sm:text-4xl">建立连接</h2><p class="mx-auto mt-4 max-w-2xl leading-7 text-slate-600 dark:text-slate-300">欢迎交流 ToB 客户成功、SaaS 产品运营、AI 工具落地，也欢迎聊聊咖啡、游戏和胶片。</p><div class="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row"><a href="mailto:sangkangjie@gmail.com" class="inline-flex items-center justify-center gap-3 rounded-full bg-ink px-6 py-3 text-sm font-bold text-white shadow-glow transition hover:-translate-y-1 dark:bg-white dark:text-ink"><i class="fa-regular fa-envelope"></i>sangkangjie@gmail.com</a><div class="flex items-center gap-3"><button type="button" class="wechat-tooltip relative grid h-12 w-12 place-items-center rounded-full border border-slate-200 bg-white text-xl text-green-600 shadow-sm transition hover:-translate-y-1 hover:border-green-300 focus:outline-none focus:ring-2 focus:ring-green-300 dark:border-white/10 dark:bg-white/10" aria-label="微信号 LanceSKJ"><i class="fa-brands fa-weixin"></i></button><a href="#" class="grid h-12 w-12 place-items-center rounded-full border border-slate-200 bg-white text-lg text-slate-700 shadow-sm transition hover:-translate-y-1 hover:border-teal-300 hover:text-teal-700 dark:border-white/10 dark:bg-white/10 dark:text-slate-200 dark:hover:text-teal-200" aria-label="个人博客或更多链接占位"><i class="fa-solid fa-link"></i></a></div></div></div></div></section>
+  </main>
+  <footer class="px-5 pb-10 lg:px-8"><div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-slate-200/80 pt-8 text-sm text-slate-500 dark:border-white/10 dark:text-slate-400 sm:flex-row"><p>© <span id="year"></span> Kangjie Sang. Built with HTML, Tailwind CSS & FontAwesome.</p><a href="#hero" class="inline-flex items-center gap-2 font-semibold text-slate-600 hover:text-teal-700 dark:text-slate-300 dark:hover:text-teal-200">回到顶部 <i class="fa-solid fa-arrow-up-long"></i></a></div></footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { const html = document.documentElement; const themeToggle = document.getElementById('theme-toggle'); const themeIcon = document.getElementById('theme-icon'); const menuToggle = document.getElementById('menu-toggle'); const menuIcon = document.getElementById('menu-icon'); const mobileMenu = document.getElementById('mobile-menu'); const mobileLinks = document.querySelectorAll('.mobile-link'); const navLinks = document.querySelectorAll('.nav-link'); const sections = document.querySelectorAll('main section[id]'); document.getElementById('year').textContent = new Date().getFullYear(); const savedTheme = localStorage.getItem('theme'); const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; const shouldUseDark = savedTheme ? savedTheme === 'dark' : prefersDark; const applyTheme = (isDark) => { html.classList.toggle('dark', isDark); themeIcon.className = isDark ? 'fa-solid fa-sun text-base' : 'fa-solid fa-moon text-base'; }; applyTheme(shouldUseDark); themeToggle.addEventListener('click', () => { const nextIsDark = !html.classList.contains('dark'); applyTheme(nextIsDark); localStorage.setItem('theme', nextIsDark ? 'dark' : 'light'); }); menuToggle.addEventListener('click', () => { const isOpen = !mobileMenu.classList.contains('hidden'); mobileMenu.classList.toggle('hidden', isOpen); menuToggle.setAttribute('aria-expanded', String(!isOpen)); menuIcon.className = isOpen ? 'fa-solid fa-bars' : 'fa-solid fa-xmark'; }); mobileLinks.forEach((link) => { link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); menuToggle.setAttribute('aria-expanded', 'false'); menuIcon.className = 'fa-solid fa-bars'; }); }); const fadeObserver = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); fadeObserver.unobserve(entry.target); } }); }, { threshold: 0.16 }); document.querySelectorAll('.fade-in').forEach((element) => fadeObserver.observe(element)); const activateNav = (id) => { navLinks.forEach((link) => { link.classList.toggle('active', link.getAttribute('href') === `#${id}`); }); }; const sectionObserver = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) { activateNav(entry.target.id); } }); }, { rootMargin: '-36% 0px -56% 0px', threshold: 0 }); sections.forEach((section) => sectionObserver.observe(section)); });
+  </script>
 </body>
 </html>
